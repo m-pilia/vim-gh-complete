@@ -1,0 +1,54 @@
+*vim-gh-complete.txt*  Complete references to issues and pull requests.
+*vim-gh-complete*
+
+==============================================================================
+CONTENTS                                            *vim-gh-complete-contents*
+
+    Introduction..................|vim-gh-complete|
+    Installation..................|vim-gh-complete-installation|
+    Functions.....................|vim-gh-complete-functions|
+    License.......................|vim-gh-complete-license|
+
+
+==============================================================================
+INTRODUCTION                                    *vim-gh-complete-introduction*
+
+This vim plugin provides asynchronous completion (via `omnifunc`) for
+references to open issues and pull requests on GitHub.
+
+The plugin relies on [hub](https://github.com/github/hub) to query the GitHub
+API. Since a query usually requires a few seconds, completion candidates are
+fetched asynchronously and cached when entering a `gitcommit` buffer.
+
+==============================================================================
+INSTALLATION                                    *vim-gh-complete-installation*
+
+This plugin is implemented in pure VimScript, and it can be installed with
+any plugin manager.
+
+This plugin depends on hub (https://github.com/github/hub), which must be
+installed and configured for this plugin to work.
+
+==============================================================================
+Functions                                          *vim-gh-complete-functions*
+
+gh_complete#omnifunc({findstart}, {base} [, {init}])  *gh_complete#omnifunc()*
+               Implements a |omnifunc|. For the first two arguments, please
+               refer to |complete-functions|. When the third, optional
+               argument is set, initialise the completion cache and return
+               nothing.
+    Example:
+>
+    " Set omnifunc
+    set omnifunc=gh_complete#omnifunc
+
+    " Initialise completion cache
+    call gh_complete#omnifunc(v:false, 0, 'init')
+<
+
+==============================================================================
+License                                              *vim-gh-complete-license*
+
+This software is distributed under the MIT License.
+
+Full license: https://github.com/m-pilia/vim-gh-complete/blob/master/LICENSE
